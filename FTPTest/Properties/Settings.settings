@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FTP_DLL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TargetFtpSource" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Ftp Secure Url</Value>
+    </Setting>
+    <Setting Name="TargetFtpSecureUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">User Name</Value>
+    </Setting>
+    <Setting Name="TargetFtpSecurePass" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Password</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
