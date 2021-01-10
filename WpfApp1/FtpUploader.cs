@@ -338,6 +338,7 @@ namespace WpfApp1
         {
             try
             {
+                int code;
                 await LoginAsync();
                 var fileInfo=new FileInfo(filePath);
 
@@ -345,9 +346,16 @@ namespace WpfApp1
                 using (var reader=fileInfo.OpenRead())
                 {
                     var res = await SendCommandAsync(FTP_CMD_STOR + fileInfo.Name);
-                    var code = await ReceiveCodeAsync();
+                    code = await ReceiveCodeAsync();
+                    if (!(code == 125 || code == 150))
+                        return false;
                     await reader.CopyToAsync(client.GetStream());
                 }
+
+                code = await ReceiveCodeAsync();
+                if (!(code == 226 || code == 250))
+                    return false;
+
 
                 return true;
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,9 @@ namespace WpfApp1
             ////ftp.setRemotePort(990);
             ////ftp.setUseStream(true);
             //ftp.login();
-            //ftp.upload("d:\\test355.pdf", false);
+            //ftp.upload("d:\\test300.pdf", false);
+            //ftp.upload("d:\\test400.pdf", false);
+
             //ftp.mkdir("ter9");
             //ftp.chdir("ter9");
             //ftp.mkdir("ter20");
@@ -46,11 +49,17 @@ namespace WpfApp1
             //var list=ftp.getDirList("");
 
             var uploader = new FtpUploader("onedigix", "78u$v6nD", "onedigix.com");
-            var res=await uploader.CheckConnectionAsync();
-            //await uploader.MakeDirectory("testmo");
-            //await uploader.ChangeDirectory("testmo");
-            await uploader.ChangeDirectoriesAsync("t1/t2/t3");
-            await uploader.UploadFileAsync("d:\\test400.pdf");
+            // var res=await uploader.CheckConnectionAsync();
+            // //await uploader.MakeDirectory("testmo");
+            // //await uploader.ChangeDirectory("testmo");
+            //// await uploader.ChangeDirectoriesAsync("t1/t2/t3");
+            var files = Directory.GetFiles("d:\\up\\");
+            await uploader.MakeDirectoriesAsync("up\\1\\2\\3");
+            await uploader.ChangeDirectoriesAsync("up\\1\\2\\3");
+            foreach (var file in files)
+            {
+                await uploader.UploadFileAsync(file);
+            }
             Debugger.Break();
 
 
